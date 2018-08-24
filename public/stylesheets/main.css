@@ -1,0 +1,338 @@
+/*Navbar CSS*/
+html{
+	height:100%;
+}
+body{
+    margin:0;
+    padding:0;
+}
+#navbar{
+	background-color: #015249;
+	color: #fff;
+}
+.navbar{
+	margin-bottom: 0px;
+}
+.navbar-default{
+    border:0px;
+}
+.navbar-default .navbar-nav li a{
+	color: #fff;
+	font-family: "Montserrat",sans-serif;
+	font-size: 16px;
+}
+.navbar-default .navbar-nav li:hover{
+	border-bottom: 3px solid  #fff;
+	color: #fff;
+}
+.navbar-default .navbar-nav li a:hover{
+	color:#fff;
+}
+.navbar-header .navbar-brand{
+	color: #fff;
+}
+.navbar-header .navbar-brand:hover{
+	color:#fff;
+}
+.icon-bar{
+	color: #fff;
+}
+
+
+/*SignUp page*/
+.signup{
+    background:#015249;
+}
+.signup:hover{
+   background:#57BC90; 
+}
+
+/*Login page*/
+.login{
+    background:#015249;
+}
+.login:hover{
+   background:#57BC90; 
+}
+
+
+/*Home Page*/
+.home-header-img {
+	background-image: url('../images/home1.jpeg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 100vh;
+	background-position: center center;
+	background-attachment: fixed;
+	opacity:0.8;
+}
+.home-caption {
+	/*position: absolute;*/
+	left: 0;
+	margin-top:25%;
+	top: 50%;
+	width: 100%;
+	text-align: center;
+	color: #000;
+}
+.home-caption .border {
+	border-radius: 8px;
+	background-color: #77C9D4;
+	color: #fff;
+	padding: 18px;
+	font-size: 18px;
+	font-family: "Montserrat",sans-serif;
+}
+
+.secondary{
+	color: #777;
+	background-color:white;
+	text-align:center;
+	padding:50px 80px;
+}
+.secondary-header{
+	text-align:center;
+	font-family: "Montserrat",sans-serif;
+	font-weight: 600;
+	margin-bottom: 20px;
+	margin-top: 0px;
+	font-size: 25px;
+}
+.secondary-header a{
+	color: #015249;
+	text-decoration: none;
+}
+.secondary-content{
+	color:#0F1626;
+	font-family: serif;
+	font-size: 20px;
+}
+.image-wrapper{
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	background-position: center center;
+	background-attachment: fixed;
+	opacity:0.8;
+	min-height: 600px;
+}
+.home-img-2{
+	background-image: url('../images/home2.jpeg');
+}
+.home-img-3{
+	background-image: url('../images/home3.jpg');
+}
+.home-img-4{
+	background-image: url('../images/home4.jpg');
+}
+.home-img-5{
+	background-image: url('../images/home5.jpg');
+}
+.footer-css{
+	background-color: #015249;
+	font-family: "Montserrat",sans-serif;
+	color: #fff;
+	padding: 10px;
+	font-size: 16px;
+}
+
+/*Blog Page*/
+/*Blog Home*/
+.blog .jumbotron{
+	margin-top: 25px;
+	font-family: serif;
+	background:#ecf0f1;
+	color: #2c3e50;
+	text-align: center;
+}
+.new-blog-btn{
+	background: #77C9D4;
+	color:#fff;
+}
+.blog-image{
+	padding: 0;
+}
+.blog-text{
+	font-family: serif;
+}
+.blog-title{
+	font-size: 20px;
+	font-family: "Montserrat",sans-serif; 
+	color: #008080;
+}
+.blog-content{
+	font-size: 18px;
+}
+.blog-btn{
+	background: #fff;
+	color: #0E6EB8;
+	border-color: #0E6EB8;
+	margin-top: 10px;
+}
+.blog-btn:hover{
+	background: #fff;
+	color: #008080;
+	border-color: #008080;
+	margin-top: 10px;
+}
+.blog-btn:active{
+	background: #fff;
+	color: #008080;
+	border-color: #008080;
+	margin-top: 10px;
+}
+.blog-btn:visited{
+	background: #fff;
+	color: #008080;
+	border-color: #008080;
+	margin-top: 10px;
+}
+
+/*New Blog*/
+.blog-textarea{
+	resize: vertical;
+}
+
+/*Blog Details Page*/
+.blog-details .panel-heading{
+	font-size: 20px;
+	font-family: "Montserrat",sans-serif; 
+	color: #008080;
+	text-align: center;
+}
+.panel-body .thumbnail{
+	padding: 0;	
+}
+.panel-body .blog-body{
+	padding: 20px;
+	font-family: serif;
+	font-size:18px;
+}
+.panel-body .blog-author{
+	font-family: "Montserrat",sans-serif; 
+	color: #008080;
+	font-size: 15px;
+}
+.panel-body .blog-author .blog-date{
+	padding-left: 13px;
+}
+
+/*Drives Page - Main*/
+.zoom {
+	margin: 20px 1.6%; 
+    transition: transform .2s;
+}
+.zoom:hover {
+    transform: scale(1.1); 
+}
+.drives .jumbotron{
+	margin-top: 25px;
+	font-family: serif;
+	background:#ecf0f1;
+	color: #2c3e50;
+	text-align: center;
+}
+.organise-button{
+	background: #77C9D4;
+	color:#fff;
+}
+hr{
+	width: 50%;
+	border-color: #015249;
+}
+.drives-caption{
+	font-family: "Montserrat",sans-serif; 
+	color: #008080;	
+}
+.drives-btn{
+	background: #fff;
+	color: #0E6EB8;
+	border-color: #0E6EB8;
+	margin-top: 10px;
+	font-family: serif;
+}
+.drives-btn:hover{
+	background: #fff;
+	color: #008080;
+	border-color: #008080;
+	margin-top: 10px;
+	font-family: serif;
+}
+.drives-btn:active{
+	background: #fff;
+	color: #008080;
+	border-color: #008080;
+	margin-top: 10px;
+	font-family: serif;
+}
+.drives-btn:visited{
+	background: #fff;
+	color: #008080;
+	border-color: #008080;
+	margin-top: 10px;
+	font-family: serif;
+}
+ 
+/*Drive Details Page*/
+
+/*Think Green*/
+section{
+	color: #015249;
+	text-shadow: #F0F0F0;
+	text-align: center;
+	font-size: 20px;
+	font-family: serif;
+}
+.carousel-inner .item img{
+	width: 100%;
+	max-height: 500px;
+}
+.container{
+	margin-top: 30px;
+}
+.item a{
+	color: #fff;
+}
+.tg-carousel{
+	float: right;
+	height: 100%;
+}
+.tg-intro{
+	float: left;
+}
+iframe {
+	width: 100%;
+	min-height: 200px;
+	height:auto;
+}
+article{
+	clear: both;
+}
+article h2{
+	color: #015249;
+}
+.tg-content{
+	min-height: 200px;
+	height:auto;
+	background-color: #fff;
+	color: #015249;
+	font-family: serif;
+	font-size: 18px;
+	vertical-align: middle;
+}
+.tg-panel .panel-heading{
+	padding: 10px;
+	margin: 0px;
+}
+.tg-panel .panel-heading h2{
+	margin: 0px;
+	font-family:"Montserrat",sans-serif;
+	font-size: 23px;
+	padding-left: 15px;
+}
+.tg-content h2{
+	font-family:"Montserrat",sans-serif
+}
+
+

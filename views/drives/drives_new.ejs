@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+    <div class='container'>
+        <div class='row'>
+            <div style='width:40%; margin:75px auto;font-family:serif;'>
+                <h3 style='text-align:center;padding-bottom:10px'>Organise your drive!</h3>
+                <form method='post' action='/drives'>
+                    <div class='form-group'>
+                        <input type='text' name='title' class='form-control' placeholder='Title' required>
+                    </div>
+                    <div class='form-group'>
+                        <input type='text' name='image' class='form-control' placeholder='Image' required>
+                    </div>
+                    <div class='form-group'>
+                        <input type='text' name='location' class='form-control' placeholder='Location' required>
+                    </div>
+                    <div class='form-group'>
+                        <input type='date' name='date' class='form-control' required>
+                    </div>
+                    <div class='form-group'>
+                        <textarea class='form-control blog-textarea' name="body" placeholder="Drive description goes here!" required></textarea>
+                    </div>
+                    <div class='form-group'>
+                        <button class='btn btn-block login'><span style='color:#fff;'><i class="fab fa-envira"></i>&nbsp;Organise!</span></button>
+                    </div>
+                </form>
+                <a href="/drives">Go Back</a>
+            </div>
+        </div>
+    </div>
+<% include ../partials/footer %>

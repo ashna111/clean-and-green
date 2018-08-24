@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+<div class='container'>
+    <div class='row'>
+       <div style='width:40%;margin:75px auto;font-family:serif;'>
+            <h3 style='text-align:center;padding-bottom:10px'>Add your own blog!</h3>
+            <form method='post' action='/blog'>
+                <div class='form-group'>
+                   <input type='text' class='form-control' name='title' placeholder='Title' required> 
+                </div>
+                <div class='form-group'>
+                   <input type='text' class='form-control' name='image' placeholder='Image' required> 
+                </div>
+                <div class='form-group'>
+                   <textarea class='form-control blog-textarea' name="body" placeholder="Blog content goes here!" required></textarea>
+                </div>
+                <div class='form-group'>
+                    <button class='btn btn-block login'><span style='color:#fff;'><i class="fas fa-paste"></i>&nbsp;Post</span></button>
+                </div>
+            </form>
+            <a href="/blog">Go Back</a>
+        </div> 
+    </div>
+</div>
+<% include ../partials/footer %>
