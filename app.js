@@ -27,9 +27,18 @@ var driveSchema = new mongoose.Schema({
    dImage: String,
    dContent: String,
    dLocation: String,
-   dDate: Date
+   dDate: {type:Date, default: Date.now}
 });
 var Drive=mongoose.model("Drive", driveSchema);
+
+// Drive.create({
+//   dTitle:"Tree Plantation" ,
+//   dImage:"https://images.loksatta.com/2018/06/tree-plantation-1.jpg",
+//   dContent:"Plant It!",
+//   dLocation:"Ghatkopar,Mumbai"
+// });
+
+
 
 //Routes
 //Landing Page
@@ -89,7 +98,13 @@ app.get("/blog/:id",function(req, res) {
 //Drives Routes
 //main
 app.get("/drives",function(req, res) {
-  res.render("drives/drives");  
+    Drive.find({},function(err,drives){
+        if(err){
+            console.log("Error");
+        }else{
+           res.render("drives/drives",{drives:drives});  
+        }
+    });
 });
 
 //New drive

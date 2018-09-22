@@ -15,66 +15,22 @@
 
     <div class="container">
 		<div class="row text-center" style="display:flex; flex-wrap:wrap;">
+			
+			<% drives.forEach(function(drive){ %>
 			<div class="col-md-4 col-sm-12 ">
 				<div class="thumbnail zoom">
-					<img  src="https://images.unsplash.com/photo-1511949817959-d24d516a8f8e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7ff012e291ab08145b3f7a995cd644ef&auto=format&fit=crop&w=500&q=60">
+					<img  src="<%= drive.dImage %>">
 					<div class="drives-caption">
-						<h4> Beach-cleaning </h4>
-						<h4> 14-08-18</h4>
+						<h4> <%= drive.dTitle %> </h4>
+						<h4><%= drive.dLocation %></h4>
+						<h4> <%= drive.dDate.toDateString() %></h4>
 					</div>
 					<p>
-						<a href="/drives/1" class="btn drives-btn">Read More</a>
+						<a href="/drives/<%= drive._id %>" class="btn drives-btn">Read More</a>
 					</p>
 				</div>
 			</div>
-			<div class="col-md-4 col-sm-12 ">
-				<div class="thumbnail zoom">
-					<img  src="https://images.unsplash.com/photo-1511949817959-d24d516a8f8e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7ff012e291ab08145b3f7a995cd644ef&auto=format&fit=crop&w=500&q=60">
-					<div class="drives-caption">
-						<h4> Beach-cleaning </h4>
-						<h4> 14-08-18</h4>
-					</div>
-					<p>
-						<a href="/drives/2" class="btn drives-btn">Read More</a>
-					</p>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-12 ">
-				<div class="thumbnail zoom">
-					<img  src="https://images.unsplash.com/photo-1511949817959-d24d516a8f8e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7ff012e291ab08145b3f7a995cd644ef&auto=format&fit=crop&w=500&q=60">
-					<div class="drives-caption">
-						<h4> Beach-cleaning </h4>
-						<h4> 14-08-18</h4>
-					</div>
-					<p>
-						<a href="/drives/3" class="btn drives-btn">Read More</a>
-					</p>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-12 ">
-				<div class="thumbnail zoom">
-					<img  src="https://cdn.pixabay.com/photo/2018/08/11/12/32/white-ling-3598577__340.jpg">
-					<div class="drives-caption">
-						<h4> Beach-cleaning </h4>
-						<h4> 14-08-18</h4>
-					</div>
-					<p>
-						<a href="/drives/4" class="btn drives-btn">Read More</a>
-					</p>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-12 ">
-				<div class="thumbnail zoom">
-					<img  src="https://cdn.pixabay.com/photo/2018/08/11/12/32/white-ling-3598577__340.jpg">
-					<div class="drives-caption">
-						<h4> Beach-cleaning </h4>
-						<h4> 14-08-18</h4>
-					</div>
-					<p>
-						<a href="/drives/5" class="btn drives-btn">Read More</a>
-					</p>
-				</div>
-			</div>
+			<% });%>
 		</div>
 	</div>
 
