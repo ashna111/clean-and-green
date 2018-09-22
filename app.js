@@ -77,7 +77,13 @@ app.post("/blog",function(req,res){
 
 //Blog-show route
 app.get("/blog/:id",function(req, res) {
-   res.render("blog/blog_show"); 
+    Blog.findById(req.params.id,function(err,foundBlog){
+        if(err){
+            res.redirect("/blog");
+        }else{
+           res.render("blog/blog_show",{blog:foundBlog});  
+        }
+    });
 });
 
 //Drives Routes

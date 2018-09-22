@@ -2,25 +2,16 @@
     <div class='container'>
         <div class='row'>
             <div class='panel panel-default blog-details' style='width:80%;margin:25px auto'>
-                <div class='panel-heading'>Clean it up!</div>
+                <div class='panel-heading'><%= blog.bTitle %></div>
                 <div class='panel-body'>
                     <div class='thumbnail' style='width:70%;margin:0 auto'>
-                        <img src='https://financialtribune.com/sites/default/files/field/image/17january/13_green_2.jpg'>
+                        <img src='<%= blog.bImage %>'>
                     </div>
                     <div class='blog-body'>
-                        <p> Why is it when we step out of our homes, we will find the roadside littered? Is it the municipal corporation that isn’t doing its job? Is it the local politician who should ensure things are kept clean? Do we not have enough dustbins?
-                            None of the above issues fully explain why India is unclean. The reason is that we make it dirty in the first place. And if we want truly to be a clean country we need to take steps to ensure we minimise filth in the first place, rather than hoping someone will pick up the broom and clean it. 
-                            Developed countries in Western Europe and North America do not have local authorities sweeping the streets all the time. 
-                            They have systems in place, and the local population cooperates to not create filth in the first place.
-                            We on the other hand look at our country differently from our homes. Inside our houses, we want things to be spick and span. Outside the entrance door, it doesn’t matter. It isn’t mine. 
-                            It’s dirty anyway and how does it matter if i dump some more litter on the streets?
-                            With this mentality, you can have an army of municipal corporation workers working 24×7, a hundred celebrities sweeping the streets, the PM making a dozen speeches, i assure you, India will not become clean.
-                            The only way it can and will become clean is if we minimise and prevent creating filth in the first place, and the only way that will happen is when all of us together think ‘what is outside my home is also mine’.
-                            Given the number of people we have, we can achieve a lot if we all get together.
-                            We can achieve it together!
+                        <p> <%= blog.bContent %>
                         </p>
                     </div>
-                    <div class='blog-author pull-right'>~ By username<br><span class='blog-date'>17-08-2018  06:30:15</span></div>
+                    <div class='blog-author pull-right'>~ By username<br><span class='blog-date'><%= blog.bDate.toDateString() %></span></div>
                 </div>
             </div>
         </div>
