@@ -59,6 +59,22 @@ app.get("/blog/new",function(req, res) {
    res.render("blog/blog_new"); 
 });
 
+//Post route to create a new blog
+app.post("/blog",function(req,res){
+    var name=req.body.title;
+    var image=req.body.image;
+    var content=req.body.body;
+    
+    var newBlog={bTitle:name,bImage:image,bContent:content};
+    Blog.create(newBlog,function(err,newlyCreated){
+       if(err){
+           console.log("Error");
+       } else{
+           res.redirect("/blog");
+       }
+    });
+});
+
 //Blog-show route
 app.get("/blog/:id",function(req, res) {
    res.render("blog/blog_show"); 
