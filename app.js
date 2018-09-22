@@ -1,9 +1,35 @@
 var express=require('express');
 var app=express();
+var bodyParser=require('body-parser');
+var mongoose=require('mongoose');
+var methodOverride=require('method-override');
+
+//DB connection
+mongoose.connect("mongodb://localhost/cng");
 
 //Configuration
+app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
+
+//Schema
+var blogSchema = new mongoose.Schema({
+    bTitle: String,
+    bImage: String,
+    bContent: String,
+    bDate: { type: Date, default: Date.now }
+});
+var Blog=mongoose.model("Blog", blogSchema);
+
+var driveSchema = new mongoose.Schema({
+   dTitle: String,
+   dImage: String,
+   dContent: String,
+   dLocation: String,
+   dDate: Date
+});
+var Drive=mongoose.model("Drive", driveSchema);
 
 //Routes
 //Landing Page
@@ -19,7 +45,13 @@ app.get("/home",function(req,res){
 //Blog
 //Blog-Home
 app.get("/blog",function(req,res){
-	res.render("blog/blog");	
+    Blog.find({},function(err,blogs){
+        if(err){
+            console.log("Error");
+        }else{
+            res.render("blog/blog",{blogs:blogs});
+        }
+    });
 });
 
 //Blog-New

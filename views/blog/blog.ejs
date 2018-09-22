@@ -7,53 +7,29 @@
             <p><a class="btn btn-lg new-blog-btn" href="/blog/new" role="button"><i class="fas fa-pen"></i>&nbsp; Write your own blog</a></p>
         </div>
         
-        <!--Blog 1-->
+        <% blogs.forEach(function(blog){ %>
         <div class='row'>
             <div class='panel panel-default'>
                 <div class='panel-body'>
                     <div class='col-md-4 col-sm-12'>
                         <div class='thumbnail blog-image'>
-                            <img src='https://financialtribune.com/sites/default/files/field/image/17january/13_green_2.jpg'>
+                            <img src='<%= blog.bImage %>'>
                         </div>
                     </div>
                     <div class='col-md-8 col-sm-12'>
                         <div class='blog-text'>
-                            <div class='blog-title'>Clean it up!</div>
+                            <div class='blog-title'><%= blog.bTitle %></div>
                             <div class='blog-content'>
-                                Why is it when we step out of our homes, we will find the roadside littered? Is it the municipal corporation that isn’t doing its job? Is it the local politician who should ensure things are kept clean? Do we not have enough dustbins?
-                                None of the above issues fully explain why India is unclean. The reason is that we make it dirty in the first place. 
-                                And if we want truly to be a clean country we need to take steps to ensure we minimise filth in the first place, rather than hoping someone will pick up the broom and clean it... 
+                                <%= blog.bContent.substring(0, 510) %>...
                             </div>
-                            <a href="/blog/1" class='btn btn-primary blog-btn pull-right'>Continue Reading&nbsp;<i class="fas fa-angle-right"></i></a>
+                            <a href="/blog/<%= blog._id %>" class='btn btn-primary blog-btn pull-right'>Continue Reading&nbsp;<i class="fas fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <% }); %>
         
-        <!--Blog 2-->
-        <div class='row'>
-            <div class='panel panel-default'>
-                <div class='panel-body'>
-                    <div class='col-md-4 col-sm-12'>
-                        <div class='thumbnail blog-image'>
-                            <img src='https://springsadvertiser.co.za/wp-content/uploads/sites/28/2015/05/green-abstract_00240095-1.jpg'>
-                        </div>
-                    </div>
-                    <div class='col-md-8 col-sm-12'>
-                        <div class='blog-text'>
-                            <div class='blog-title'>Just Do It !</div>
-                            <div class='blog-content'>
-                                Why is it when we step out of our homes, we will find the roadside littered? Is it the municipal corporation that isn’t doing its job? Is it the local politician who should ensure things are kept clean? Do we not have enough dustbins?
-                                None of the above issues fully explain why India is unclean. The reason is that we make it dirty in the first place. 
-                                And if we want truly to be a clean country we need to take steps to ensure we minimise filth in the first place, rather than hoping someone will pick up the broom and clean it... 
-                            </div>
-                            <a href="/blog/2" class='btn btn-primary blog-btn pull-right'>Continue Reading&nbsp;<i class="fas fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 <% include ../partials/footer %>
