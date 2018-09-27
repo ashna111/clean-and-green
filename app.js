@@ -86,6 +86,39 @@ app.get("/blog/:id",function(req, res) {
     });
 });
 
+//Edit blog route
+app.get("/blog/:id/edit",function(req, res) {
+   Blog.findById(req.params.id,function(err,blogFound){
+       if(err){
+           console.log(err);
+       }else{
+           res.render("blog/blog_edit",{blog:blogFound});
+       }
+   }) 
+});
+
+//edit put route
+app.put("/blog/:id",function(req,res){
+   Blog.findByIdAndUpdate(req.params.id,req.body.blog,function(err,updatedBlog){
+       if(err){
+           res.redirect("/blog");
+       }else{
+           res.redirect("/blog/"+req.params.id);
+       }
+   }) ;
+});
+
+//delete blog
+app.delete("/blog/:id/",function(req,res){
+    Blog.findByIdAndRemove(req.params.id,function(err){
+        if(err){
+            res.redirect("/blog");
+        }else{
+            res.redirect("/blog");
+        }
+    })
+});
+
 //Drives Routes
 //main
 app.get("/drives",function(req, res) {

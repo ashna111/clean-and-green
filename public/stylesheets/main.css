@@ -164,25 +164,25 @@ body{
 .blog-content{
 	font-size: 18px;
 }
-.blog-btn{
+.blog-btn,.ds-read{
 	background: #fff;
 	color: #0E6EB8;
 	border-color: #0E6EB8;
 	margin-top: 10px;
 }
-.blog-btn:hover{
+.blog-btn:hover,.ds-read:hover{
 	background: #fff;
 	color: #008080;
 	border-color: #008080;
 	margin-top: 10px;
 }
-.blog-btn:active{
+.blog-btn:active,.ds-read:active{
 	background: #fff;
 	color: #008080;
 	border-color: #008080;
 	margin-top: 10px;
 }
-.blog-btn:visited{
+.blog-btn:visited,.ds-read:visited{
 	background: #fff;
 	color: #008080;
 	border-color: #008080;
@@ -216,6 +216,28 @@ body{
 }
 .panel-body .blog-author .blog-date{
 	padding-left: 13px;
+}
+.blog-icons{
+	font-size: 15px;
+}
+.delete-form{
+	display: inline;
+}
+.blog-author .tip {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+.blog-author .tip span {
+  display: none;
+  z-index: 100;
+  position: absolute;
+  top: 1.5em;
+  width: 4em;
+  border-radius: 0.5em;
+}
+.tip:hover span {
+  display: inline-block;
 }
 
 /*Drives Page - Main*/
@@ -280,6 +302,26 @@ hr{
 }
  
 /*Drive Details Page*/
+.thumbnail.ds img{
+    width:100%;
+}
+
+.ds-caption{
+	float: left;
+	width:33.33%;
+}
+.ds-clearfix{
+	clear: both;
+}
+.ds-venue{
+	font-family: serif;
+	padding-top: 10px;
+	font-size:15px;
+	color: #323233;
+}
+.ds-read{
+	border-radius: 10px;
+}
 
 /*Think Green*/
 section{
