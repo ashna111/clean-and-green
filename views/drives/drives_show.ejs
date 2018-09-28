@@ -4,17 +4,21 @@
     <div class="row">
         <div class="col-md-7">
             <div class="thumbnail ds">
-                <img class="img-responsive" src="../images/reuse.jpg">
+                <img class="img-responsive" src="<%= drive.dbanner %>">
                 <div class="ds-clearfix">
-                    <h3 class="ds-caption">date</h3>
-                    <h3 class="ds-caption" align="center">name</h3>
-                    <h3 class="ds-caption" align="right">location</h3>
+                    <h3 class="ds-caption"><%= drive.dDate.toDateString() %></h3>
+                    <h3 class="ds-caption" align="center"><%= drive.dTitle %></h3>
+                    <h3 class="ds-caption" align="right"><%= drive.dLocation %></h3>
                 </div>
-                    
-                    <p align="center">
-                        <em>organised by:username</em>
-                    </p> 
-                
+                <p align="center">
+                    <em>organised by:username</em>
+                </p> 
+                <div>
+                    <a href="/drives/<%= drive._id %>/edit" class="tip btn btn-default"><i class="fas fa-pen blog-icons"></i><span>Edit</span></a>
+                    <form action="/drives/<%= drive._id %>?_method=DELETE" method="POST">
+                        <button class="tip btn btn-default"><i class="far fa-trash-alt blog-icons blog-delete-icon"></i><span>Delete</span></button>
+                    </form>
+                </div>
             </div>
             
         </div>
@@ -27,7 +31,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="thumbnail">
-                            <img src="https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/05/27/Pictures/_c80143b2-61db-11e8-8da7-089610bcbead.jpg">
+                            <img src="<%= drive.dvenue %>">
                         </div>
                         <div align="center"><button class="btn btn-success ds-read">Details</button></div>
                         
