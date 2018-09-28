@@ -3,28 +3,28 @@
         <div class='row'>
             <div style='width:40%; margin:75px auto;font-family:serif;'>
                 <h3 style='text-align:center;padding-bottom:10px'>Organise your drive!</h3>
-                <form method='post' action='/drives'>
+                <form action="/drives/<%= drive._id %>?_method=PUT" method="post">
                     <div class='form-group'>
-                        <input type='text' name='title' class='form-control' placeholder='Title' required>
+                        <input type='text' name='drive[dTitle]' class='form-control' value='<%= drive.dTitle%>' required>
                     </div>
                     <div class='form-group'>
-                        <input type='text' name='banner' class='form-control' placeholder='Banner' required>
+                        <input type='text' name='drive[dbanner]' class='form-control' value='<%= drive.dbanner%>' required>
                     </div>
                     <div class='form-group'>
-                        <input type='text' name='location' class='form-control' placeholder='Location' required>
+                        <input type='text' name='drive[dLocation]' class='form-control' value='<%= drive.dLocation%>' required>
                     </div>
                     <div class='form-group'>
-                        <input type='text' name='venue' class='form-control' placeholder='Venue' required>
+                        <input type='text' name='drive[dvenue]' class='form-control' value='<%= drive.dvenue%>' required>
                     </div>
                     <div class='form-group'>
-                        <input type='date' name='date' class='form-control' required>
+                        <input type='date' name='drive[dDate]' class='form-control' value='<%= drive.dDate%>' required>
                     </div>
                     <!--<div class='form-group'>-->
                     <!--   <input type='time' name='time' min='9:00' max='17:00' class='form-control' required /> -->
                     <!--   <span class="hours">Working between: 9AM to 5PM</span>-->
                     <!--</div>-->
                     <div class='form-group'>
-                        <textarea class='form-control blog-textarea' name="body" placeholder="Drive description goes here!" required></textarea>
+                        <textarea class='form-control blog-textarea' name="drive[dContent]" required><%= drive.dContent %></textarea>
                     </div>
                     <div class='form-group'>
                         <button class='btn btn-block login'><span style='color:#fff;'><i class="fab fa-envira"></i>&nbsp;Organise!</span></button>

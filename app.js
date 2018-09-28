@@ -24,10 +24,11 @@ var Blog=mongoose.model("Blog", blogSchema);
 
 var driveSchema = new mongoose.Schema({
    dTitle: String,
-   dImage: String,
+   dbanner: String,
+   dvenue: String,
    dContent: String,
    dLocation: String,
-   dDate: {type:Date, default: Date.now}
+   dDate: Date
 });
 var Drive=mongoose.model("Drive", driveSchema);
 
@@ -120,7 +121,7 @@ app.delete("/blog/:id/",function(req,res){
 });
 
 //Drives Routes
-//main
+//display all drives
 app.get("/drives",function(req, res) {
     Drive.find({},function(err,drives){
         if(err){
@@ -131,18 +132,18 @@ app.get("/drives",function(req, res) {
     });
 });
 
-//New drive
+//Form to create New drive
 app.get("/drives/new",function(req, res) {
   res.render("drives/drives_new");  
 });
 
-//Add a new drive
+//Add a new drive to db
 app.post("/drives",function(req,res){
-   var newDrive={dTitle:req.body.title, dImage:req.body.image, dContent:req.body.body, dLocation:req.body.location,dDate:req.body.date};
-   Drive.create(newDrive,function(err,newlyCreatedBlog){
-     if(err){
+    var newDrive={dTitle:req.body.title, dbanner:req.body.banner, dvenue:req.body.venue, dContent:req.body.body, dLocation:req.body.location,dDate:req.body.date};
+    Drive.create(newDrive,function(err, newlyCreatedDrive){
+        if(err){
            console.log("Error");
-       } else{
+        } else{
            res.redirect("/drives");
        }
    });
@@ -150,7 +151,46 @@ app.post("/drives",function(req,res){
 
 //details drive
 app.get("/drives/:id",function(req, res) {
-  res.render("drives/drives_show");  
+    Drive.findById(req.params.id,function(err,foundDrive){
+        if(err){
+            res.redirect("/drives");
+        }else{
+           res.render("drives/drives_show",{drive:foundDrive});  
+        }
+    });
+});
+
+//Edit drive route
+app.get("/drives/:id/edit",function(req, res) {
+   Drive.findById(req.params.id,function(err,driveFound){
+       if(err){
+           console.log(err);
+       }else{
+           res.render("drives/drives_edit", {drive:driveFound});
+       }
+   }) 
+});
+
+//edit put drive route
+app.put("/drives/:id",function(req,res){
+   Drive.findByIdAndUpdate(req.params.id,req.body.drive,function(err,updatedDrive){
+       if(err){
+           res.redirect("/drives");
+       }else{
+           res.redirect("/drives/"+req.params.id);
+       }
+   }) ;
+});
+
+//delete drive
+app.delete("/drives/:id/",function(req,res){
+    Drive.findByIdAndRemove(req.params.id,function(err){
+        if(err){
+            console.log(err);
+        }else{
+            res.redirect("/drives");
+        }
+    })
 });
 
 //Recycle Waste
