@@ -36,13 +36,18 @@
         					<li><a href="/drives">Drives</a></li>
         					<li><a href="/think-green">Think-Green</a></li>
         					<li><a href="/blog">Blog</a></li>
-        					<li><a href="#">Dispose-waste</a></li>
-        					<li><a href="/recycle">Recycle-waste</a></li>
+        					<li><a href="/dumpster">Dispose-waste</a></li>
+        					<!--<li><a href="/recycle">Recycle-waste</a></li>-->
         				</ul>
         					
         				<ul class="nav navbar-nav navbar-right">
-        					<li><a href="/login">Login</a></li>
-        					<li><a href="/register">Sign-Up</a></li>
+        					<% if(!currentUser){ %>
+        						<li><a href="/login">Login</a></li>
+        						<li><a href="/register">Sign-Up</a></li>	
+					        <% } else{ %>
+        						<li><a><em><%= currentUser.username %></em></a></li>
+        						<li><a href="/logout">Logout</a></li>
+        					<% } %>
         				</ul>
         			</div><!-- /.navbar-collapse -->
         		</div><!-- /.container-fluid -->

@@ -13,12 +13,14 @@
                     </div>
                     <div class='blog-author'>
                         <div class='pull-left'>
-                            <a href="/blog/<%= blog._id %>/edit" class="tip btn btn-default"><i class="fas fa-pen blog-icons"></i><span>Edit</span></a>
-                            <form action="/blog/<%= blog._id %>?_method=DELETE" method="POST" class="delete-form">
-                                <button class="tip btn btn-default"><i class="far fa-trash-alt blog-icons blog-delete-icon"></i><span>Delete</span></button>
-                            </form>
+                            <% if(currentUser && blog.author.id.equals(currentUser._id)){ %>
+                                <a href="/blog/<%= blog._id %>/edit" class="btn btn-default"><i class="fas fa-pen blog-icons"></i></a>
+                                <form action="/blog/<%= blog._id %>?_method=DELETE" method="POST" class="delete-form">
+                                    <button class="btn btn-default"><i class="far fa-trash-alt blog-icons blog-delete-icon"></i></button>
+                                </form>
+                            <% } %>    
                         </div>
-                        <div class='pull-right'>~ By username<span class='blog-date'><%= blog.bDate.toDateString() %></span></div>
+                        <div class='pull-right'>~ <%= blog.author.username %><span class='blog-date'><%= blog.bDate.toDateString() %></span></div>
                     </div>
                     
                 </div>

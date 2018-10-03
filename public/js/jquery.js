@@ -13,6 +13,10 @@ $(document).ready(function(){
     $(".ds-read").click(function(){
         $(".ds-venue").toggle();
     })
+    
+    $(".addComment").click(function(){
+        $("#newComment").append(" <br>Appended text");
+    });
 });
 
 

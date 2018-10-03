@@ -223,22 +223,6 @@ body{
 .delete-form{
 	display: inline;
 }
-.blog-author .tip {
-  position: relative;
-  text-decoration: none;
-  color: inherit;
-}
-.blog-author .tip span {
-  display: none;
-  z-index: 100;
-  position: absolute;
-  top: 1.5em;
-  width: 4em;
-  border-radius: 0.5em;
-}
-.tip:hover span {
-  display: inline-block;
-}
 
 /*Drives Page - Main*/
 .zoom {
@@ -382,4 +366,61 @@ article h2{
 	font-family:"Montserrat",sans-serif
 }
 
+/*Dumpster*/
 
+.dumpster .jumbotron{
+	/*margin-top: 25px;*/
+	margin-left: 10px;
+	margin-right: 10px;
+	font-family: serif;
+	background:#ecf0f1;
+	color: #2c3e50;
+	text-align: center;
+}
+
+.dumpster-button{
+	background: #77C9D4;
+	color:#fff;
+}
+
+.pincode-button{
+	background: #77C9D4;
+	color:#fff;
+	display: block;
+	margin-top: 5px;
+}
+
+.dumpster-panel{
+	/*margin-left: 15px;*/
+	/*float: left;*/
+}
+
+.dumpster-panel .panel-heading{
+	/*padding: 10px;*/
+	margin: 0px;
+}
+.dumpster-panel .panel-heading h2{
+	margin: 0px;
+	font-family:"Montserrat",sans-serif;
+	font-size: 23px;
+	padding-left: 15px;
+}
+
+.postal{
+	/*padding: 25px;*/
+	background: #ecf0f1;
+	/*float: right;*/
+	/*margin-right: 15px;*/
+	/*margin-bottom: 15px;*/
+}
+
+.postal h2{
+	margin: 0px;
+	font-family:"Montserrat",sans-serif;
+	font-size: 23px;
+	padding: 15px;
+}
+
+.postal form{
+	padding: 15px;
+}

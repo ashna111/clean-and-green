@@ -2,7 +2,27 @@
     
 <div class="container">
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-3">
+            <div class="panel panel-default tg-panel">
+                
+                    <div class="panel-heading">
+                        <h2>About the venue</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="thumbnail">
+                            <img src="<%= drive.dvenue %>">
+                        </div>
+                        <div align="center"><button class="btn btn-success ds-read">Details</button></div>
+                        
+                         <p style="display:none" class="ds-venue">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam quis quam.
+                         Nullam sapien sem, ornare ac, nonummy non, lobortis a enim. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. 
+                         Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. 
+                         Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Praesent dapibus. Praesent in mauris eu tortor porttitor accumsan. Maecenas aliquet accumsan leo. Pellentesque pretium lectus id turpis. Sed ac dolor sit amet purus malesuada congue. </p>
+                    
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-6">
             <div class="thumbnail ds">
                 <img class="img-responsive" src="<%= drive.dbanner %>">
                 <div class="ds-clearfix">
@@ -23,38 +43,25 @@
             
         </div>
         
-        <div class="col-md-5">
-            <div class="panel panel-default tg-panel">
-                
-                    <div class="panel-heading">
-                        <h2>About the venue</h2>
-                    </div>
-                    <div class="panel-body">
-                        <div class="thumbnail">
-                            <img src="<%= drive.dvenue %>">
-                        </div>
-                        <div align="center"><button class="btn btn-success ds-read">Details</button></div>
-                        
-                         <p style="display:none" class="ds-venue">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam quis quam.
-                         Nullam sapien sem, ornare ac, nonummy non, lobortis a enim. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. 
-                         Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. 
-                         Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Praesent dapibus. Praesent in mauris eu tortor porttitor accumsan. Maecenas aliquet accumsan leo. Pellentesque pretium lectus id turpis. Sed ac dolor sit amet purus malesuada congue. </p>
-                    
-                    </div>
-            </div>
+        <div class="col-md-3">
             <div class="well">
-                <div class="text-right">
-                    <a class="btn btn-success" href="#">Add New Comment</a>
-                </div>
+                
+                <form action="#">
+                    <textarea>Enter comment here</textarea>
+                    <input type="submit" class="addComment">
+                </form>
+                <!--<button class="addComment">Submit</button>-->
+                <!--<div class="text-right">-->
+                <!--    <a class="btn btn-success" href="#">Add New Comment</a>-->
+                <!--</div>-->
                 
                     <div class="row">
                         <div class="col-md-12">
                             <strong> username </strong>
                             <span class="pull-right">10 days ago</span>
-                            <p>
+                            <p id="newComment">
                                  - comment
                             </p>
-                            
                         </div>
                     </div>
             </div>

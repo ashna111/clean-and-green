@@ -3,22 +3,27 @@ var app=express();
 var bodyParser=require('body-parser');
 var mongoose=require('mongoose');
 var methodOverride=require('method-override');
+var moment=require('moment');
+var passport=require("passport"),
+    localStrategy=require("passport-local"),
+    passportLocalMongoose=require("passport-local-mongoose");
 
 //DB connection
 mongoose.connect("mongodb://localhost/cng");
-
-//Configuration
-app.use(bodyParser.urlencoded({extended:true}));
-app.set("view engine","ejs");
-app.use(express.static(__dirname + "/public"));
-app.use(methodOverride("_method"));
 
 //Schema
 var blogSchema = new mongoose.Schema({
     bTitle: String,
     bImage: String,
     bContent: String,
-    bDate: { type: Date, default: Date.now }
+    bDate: { type: Date, default: Date.now },
+    author:{
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username:String
+    }
 });
 var Blog=mongoose.model("Blog", blogSchema);
 
@@ -31,6 +36,39 @@ var driveSchema = new mongoose.Schema({
    dDate: Date
 });
 var Drive=mongoose.model("Drive", driveSchema);
+
+var userSchema = new mongoose.Schema({
+    username:String,
+    password: String, 
+    email: String,
+    age: Number
+});
+userSchema.plugin(passportLocalMongoose);
+var User=mongoose.model("User", userSchema);
+
+
+//Configuration
+app.use(bodyParser.urlencoded({extended:true}));
+app.set("view engine","ejs");
+app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
+
+//Passport config
+app.use(require("express-session")({
+    secret:"Clean and green is best!",
+    resave:false,
+    saveUninitialized:false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use(function(req, res, next){
+    res.locals.currentUser=req.user;
+    next();
+});
 
 //Routes
 //Landing Page
@@ -65,8 +103,12 @@ app.post("/blog",function(req,res){
     var name=req.body.title;
     var image=req.body.image;
     var content=req.body.body;
+    var author={
+       id:req.user._id,
+       username: req.user.username
+   }
     
-    var newBlog={bTitle:name,bImage:image,bContent:content};
+    var newBlog={bTitle:name,bImage:image,bContent:content, author:author};
     Blog.create(newBlog,function(err,newlyCreated){
        if(err){
            console.log("Error");
@@ -166,7 +208,8 @@ app.get("/drives/:id/edit",function(req, res) {
        if(err){
            console.log(err);
        }else{
-           res.render("drives/drives_edit", {drive:driveFound});
+           var newDate = moment(driveFound.dDate).utc().format("YYYY-MM-DD");
+           res.render("drives/drives_edit", {drive:driveFound, newDate: newDate});
        }
    }) 
 });
@@ -193,22 +236,55 @@ app.delete("/drives/:id/",function(req,res){
     })
 });
 
-//Recycle Waste
-app.get("/recycle",function(req, res) {
-   res.render("recycle"); 
-});
+// //Recycle Waste
+// app.get("/recycle",function(req, res) {
+//   res.render("recycle"); 
+// });
 
 //think-green
 app.get("/think-green",function(req, res) {
    res.render("think_green"); 
 });
 
+//Dispose Waste - Dumpster
+app.get("/dumpster", function(req, res) {
+    res.render("dumpster");
+});
+
 //Auth Routes
 app.get("/register",function(req,res){
 	res.render("auth/register");
 });
+
+app.post("/register", function(req, res){
+    var newUser=new User({username: req.body.username, email: req.body.email, age: req.body.age});
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            return res.redirect("auth/register");
+        }
+        passport.authenticate("local")(req, res, function(){
+            res.redirect("/home");
+        });
+    });
+});
+
+//show login form
 app.get("/login",function(req,res){
 	res.render("auth/login");
+});
+
+//handling login
+app.post("/login", passport.authenticate("local",
+    {
+        successRedirect: "/home",
+        failureRedirect: "/login"
+    }), function(req, res){
+});
+
+//logout
+app.get("/logout", function(req, res){
+    req.logout();
+    res.redirect("/home");
 });
 
 
