@@ -11,41 +11,10 @@ var passport=require("passport"),
 //DB connection
 mongoose.connect("mongodb://localhost/cng");
 
-//Schema
-var blogSchema = new mongoose.Schema({
-    bTitle: String,
-    bImage: String,
-    bContent: String,
-    bDate: { type: Date, default: Date.now },
-    author:{
-        id: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
-        },
-        username:String
-    }
-});
-var Blog=mongoose.model("Blog", blogSchema);
-
-var driveSchema = new mongoose.Schema({
-   dTitle: String,
-   dbanner: String,
-   dvenue: String,
-   dContent: String,
-   dLocation: String,
-   dDate: Date
-});
-var Drive=mongoose.model("Drive", driveSchema);
-
-var userSchema = new mongoose.Schema({
-    username:String,
-    password: String, 
-    email: String,
-    age: Number
-});
-userSchema.plugin(passportLocalMongoose);
-var User=mongoose.model("User", userSchema);
-
+//Models
+var Blog=require('./models/blog');
+var Drive=require('./models/drive');
+var User=require('./models/user');
 
 //Configuration
 app.use(bodyParser.urlencoded({extended:true}));
