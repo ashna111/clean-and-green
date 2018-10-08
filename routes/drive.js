@@ -67,11 +67,11 @@ router.put("/drives/:id",middleware.loggedIn,function(req,res){
     
     var location=req.body.drive.dLocality+",+"+req.body.drive.dArea+",+"+req.body.drive.dCity;
     var newDriveUpdates={
-        dTitle:req.body.drive.dtitle, 
+        dTitle:req.body.drive.dTitle, 
         dbanner:req.body.drive.dbanner,
         dvenue:req.body.drive.dvenue, 
         dContent:req.body.drive.dContent,
-        dLocality:req.body.dLocality, 
+        dLocality:req.body.drive.dLocality, 
         dArea:req.body.drive.dArea,
         dCity: req.body.drive.dCity,
         dGeoLocation: location ,
