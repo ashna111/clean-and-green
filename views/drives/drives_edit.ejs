@@ -5,13 +5,19 @@
                 <h3 style='text-align:center;padding-bottom:10px'>Organise your drive!</h3>
                 <form action="/drives/<%= drive._id %>?_method=PUT" method="post">
                     <div class='form-group'>
-                        <input type='text' name='drive[dTitle]' class='form-control' value='<%= drive.dTitle%>' required>
+                        <input type='text' name='drive[dTitle]' class='form-control' value='<%= drive.dTitle %>' required>
                     </div>
                     <div class='form-group'>
                         <input type='text' name='drive[dbanner]' class='form-control' value='<%= drive.dbanner%>' required>
                     </div>
                     <div class='form-group'>
-                        <input type='text' name='drive[dLocation]' class='form-control' value='<%= drive.dLocation%>' required>
+                        <input type="text" name='drive[dLocality]' value='<%= drive.dLocality%>' class="form-control">
+                    </div>
+                    <div class='form-group'>
+                        <input type="text" name='drive[dArea]' value='<%= drive.dArea%>' class="form-control">
+                    </div>
+                    <div class='form-group'>
+                        <input type="text" name='drive[dCity]' value='<%= drive.dCity%>' class="form-control">
                     </div>
                     <div class='form-group'>
                         <input type='text' name='drive[dvenue]' class='form-control' value='<%= drive.dvenue%>' required>

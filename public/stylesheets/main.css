@@ -291,13 +291,6 @@ hr{
     width:100%;
 }
 
-.ds-caption{
-	float: left;
-	width:33.33%;
-}
-.ds-clearfix{
-	clear: both;
-}
 .ds-venue{
 	font-family: serif;
 	padding-top: 10px;
@@ -306,6 +299,12 @@ hr{
 }
 .ds-read{
 	border-radius: 10px;
+}
+
+#ds-name{
+	text-transform: uppercase;
+	font-family: "Montserrat",sans-serif;
+	color: #015249;
 }
 
 /*Think Green*/

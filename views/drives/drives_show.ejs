@@ -25,25 +25,38 @@
         <div class="col-md-6">
             <div class="thumbnail ds">
                 <img class="img-responsive" src="<%= drive.dbanner %>">
-                <div class="ds-clearfix">
-                    <h3 class="ds-caption"><%= drive.dDate.toDateString() %></h3>
-                    <h3 class="ds-caption" align="center"><%= drive.dTitle %></h3>
-                    <h3 class="ds-caption" align="right"><%= drive.dLocation %></h3>
-                </div>
-                <p align="center">
-                    <em>organised by:username</em>
-                </p> 
                 <div>
+                    <h3 id="ds-name"><%= drive.dTitle %></h3>
+                    <h4><%= drive.dLocation %></h3>
+                    <h4><%= dDate  %></h3>
+                    <p>
+                        <em>organised by:<%= drive.dOrganiser.username %></em>
+                    </p> 
+                </div>
+                <div class='blog-author'>
+                <div class="pull-left">
                     <a href="/drives/<%= drive._id %>/edit" class="tip btn btn-default"><i class="fas fa-pen blog-icons"></i><span>Edit</span></a>
                     <form action="/drives/<%= drive._id %>?_method=DELETE" method="POST">
                         <button class="tip btn btn-default"><i class="far fa-trash-alt blog-icons blog-delete-icon"></i><span>Delete</span></button>
                     </form>
+                </div>
                 </div>
             </div>
             
         </div>
         
         <div class="col-md-3">
+            <div>
+				<div class="row map-container text-center">
+		    		<iframe
+						width="100%"
+						
+						frameborder="0" style="border:0"
+						src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAE4x8s87dyYr_6auXG9CG2BEFpgXnIwC4 &q='<%= drive.dGeoLocation %>'">
+					</iframe>
+		    	</div>
+		    </div>
+		    
             <div class="well">
                 
                 <form action="#">

@@ -5,8 +5,18 @@ var driveSchema = new mongoose.Schema({
    dbanner: String,
    dvenue: String,
    dContent: String,
-   dLocation: String,
-   dDate: Date
+   dGeoLocation: String,
+   dLocality: String,
+   dArea: String,
+   dCity: String,
+   dDate: Date,
+   dOrganiser: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username:String
+    }
 });
 
 module.exports=mongoose.model("Drive", driveSchema);
