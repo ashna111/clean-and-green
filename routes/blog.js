@@ -1,6 +1,7 @@
 var express=require("express");
 var router=express.Router();
 var Blog=require("../models/blog");
+var middleware=require("../middleware/index");
 
 //Blog
 //Blog-Home
@@ -15,12 +16,12 @@ router.get("/blog",function(req,res){
 });
 
 //Blog-New
-router.get("/blog/new",function(req, res) {
+router.get("/blog/new",middleware.loggedIn,function(req, res) {
    res.render("blog/blog_new"); 
 });
 
 //Post route to create a new blog
-router.post("/blog",function(req,res){
+router.post("/blog",middleware.loggedIn,function(req,res){
     var name=req.body.title;
     var image=req.body.image;
     var content=req.body.body;
@@ -51,7 +52,7 @@ router.get("/blog/:id",function(req, res) {
 });
 
 //Edit blog route
-router.get("/blog/:id/edit",function(req, res) {
+router.get("/blog/:id/edit",middleware.loggedIn,function(req, res) {
    Blog.findById(req.params.id,function(err,blogFound){
        if(err){
            console.log(err);
@@ -62,7 +63,7 @@ router.get("/blog/:id/edit",function(req, res) {
 });
 
 //edit put route
-router.put("/blog/:id",function(req,res){
+router.put("/blog/:id",middleware.loggedIn,function(req,res){
    Blog.findByIdAndUpdate(req.params.id,req.body.blog,function(err,updatedBlog){
        if(err){
            res.redirect("/blog");
@@ -73,7 +74,7 @@ router.put("/blog/:id",function(req,res){
 });
 
 //delete blog
-router.delete("/blog/:id/",function(req,res){
+router.delete("/blog/:id/",middleware.loggedIn,function(req,res){
     Blog.findByIdAndRemove(req.params.id,function(err){
         if(err){
             res.redirect("/blog");
