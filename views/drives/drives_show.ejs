@@ -10,76 +10,103 @@
                     </div>
                     <div class="panel-body">
                         <div class="thumbnail">
-                            <img src="<%= drive.dvenue %>">
+                            <img src="<%= drive.dvenueImage %>">
                         </div>
                         <div align="center"><button class="btn btn-success ds-read">Details</button></div>
                         
-                         <p style="display:none" class="ds-venue">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam quis quam.
-                         Nullam sapien sem, ornare ac, nonummy non, lobortis a enim. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. 
-                         Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. 
-                         Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Praesent dapibus. Praesent in mauris eu tortor porttitor accumsan. Maecenas aliquet accumsan leo. Pellentesque pretium lectus id turpis. Sed ac dolor sit amet purus malesuada congue. </p>
+                         <p style="display:none" class="ds-venue"><%= drive.dvenue %> </p>
                     
                     </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="thumbnail ds">
-                <img class="img-responsive" src="<%= drive.dbanner %>">
-                <div>
-                    <h3 id="ds-name"><%= drive.dTitle %></h3>
-                    <h4><%= drive.dLocation %></h3>
-                    <h4><%= dDate  %></h3>
-                    <p>
-                        <em>organised by:<%= drive.dOrganiser.username %></em>
-                    </p> 
-                </div>
-                <div class='blog-author'>
-                <div class="pull-left">
-                    <a href="/drives/<%= drive._id %>/edit" class="tip btn btn-default"><i class="fas fa-pen blog-icons"></i><span>Edit</span></a>
-                    <form action="/drives/<%= drive._id %>?_method=DELETE" method="POST">
-                        <button class="tip btn btn-default"><i class="far fa-trash-alt blog-icons blog-delete-icon"></i><span>Delete</span></button>
-                    </form>
-                </div>
+        
+        <div class="col-md-5">
+            <div class="panel panel-default tg-panel">
+                <div class="panel-body">
+                    <div class="thumbnail ds">
+                        <img class="img-responsive" src="<%= drive.dbanner %>">
+                    </div>
+                    <div>
+                        <h3 id="ds-name"><%= drive.dTitle %></h3>
+                        <h4><%= drive.dLocality %>  <%= drive.dArea %></h3>
+                        <h5><strong><%= dDate  %></strong></h5>
+                        <p><%= drive.dContent %></p>
+                    </div>
+                    <div class="blog-author">
+                        <div class="pull-left">
+                            <% if(currentUser && drive.dOrganiser.id.equals(currentUser._id)){ %>
+                                <a href="/drives/<%= drive._id %>/edit" class="tip btn btn-default"><i class="fas fa-pen blog-icons"></i><span></span></a>
+                                <form action="/drives/<%= drive._id %>?_method=DELETE" method="POST" class="delete-form">
+                                    <button class="tip btn btn-default"><i class="far fa-trash-alt blog-icons blog-delete-icon"></i><span></span></button>
+                                </form>
+                            <% } %>
+                        </div>
+                        <div class="pull-right">
+                            <em>~ Organised by <%= drive.dOrganiser.username %></em>
+                        </div>
+                    </div>
+                    <div>
+                        <form action="/drives/<%= drive._id %>/volunteer" method=POST>
+                            <button id="volunteer">Volunteer now!</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             
+            <div class="well">
+                <button class ="pull-right btn btn-success" id="addComment"></i>Add a new Comment</button>
+                <form id="commentForm" style="display:none;" action="/drives/<%= drive._id %>/comments" method="POST">
+                    <textarea placeholder="Enter comment here" name="comment[text]"></textarea><br>
+                    <input type="submit" class="submitComment btn btn-success" value="Submit!">
+                </form>
+                
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!--<strong> username </strong>-->
+                            <!--<span class="pull-right">10 days ago</span>-->
+                            <p id="newComment">
+                                 <% drive.comments.forEach(function(comment){ %>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <strong><%= comment.author.username %></strong>
+                                            <!--<span class="pull-right">10 days ago</span>-->
+                                            <p>
+                                                 - <%= comment.text %>
+                                            </p>
+                                           
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
         </div>
         
-        <div class="col-md-3">
+        
+        <div class="col-md-4">
             <div>
 				<div class="row map-container text-center">
 		    		<iframe
 						width="100%"
-						
-						frameborder="0" style="border:0"
+						frameborder="0" style="border:0; height: 400px;"
 						src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAE4x8s87dyYr_6auXG9CG2BEFpgXnIwC4 &q='<%= drive.dGeoLocation %>'">
 					</iframe>
 		    	</div>
 		    </div>
 		    
-            <div class="well">
-                
-                <form action="#">
-                    <textarea>Enter comment here</textarea>
-                    <input type="submit" class="addComment">
-                </form>
-                <!--<button class="addComment">Submit</button>-->
-                <!--<div class="text-right">-->
-                <!--    <a class="btn btn-success" href="#">Add New Comment</a>-->
-                <!--</div>-->
-                
-                    <div class="row">
-                        <div class="col-md-12">
-                            <strong> username </strong>
-                            <span class="pull-right">10 days ago</span>
-                            <p id="newComment">
-                                 - comment
-                            </p>
-                        </div>
-                    </div>
-            </div>
-            
+		  <div>
+		      <ul>
+		        <% drive.volunteers.forEach(function(volunteer){ %>
+                    <li><%= volunteer.vol.username %></li>
+                <% }) %>
+		      </ul>
+		  </div>
+		    
+		    
         </div>
+        
+        
     </div>
 </div>
 

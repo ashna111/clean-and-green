@@ -15,6 +15,8 @@ mongoose.connect("mongodb://localhost/cng");
 var Blog=require('./models/blog');
 var Drive=require('./models/drive');
 var User=require('./models/user');
+var Comment=require('./models/comment');
+var Volunteer=require('./models/volunteer');
 
 //Configuration
 app.use(bodyParser.urlencoded({extended:true}));
@@ -44,16 +46,25 @@ var staticRoutes=require("./routes/staticRoutes");
 var blogRoutes=require("./routes/blog");
 var driveRoutes=require("./routes/drive");
 var indexRoutes=require("./routes/index");
+var commentRoutes=require("./routes/comment");
+var volunteerRoutes=require("./routes/volunteer");
 
 //Routes-refactor
 app.use(staticRoutes);
 app.use(blogRoutes);
 app.use(indexRoutes);
 app.use(driveRoutes);
+app.use(commentRoutes);
+app.use(volunteerRoutes);
 
 //Dispose Waste - Dumpster
 app.get("/dumpster", function(req, res) {
     res.render("dumpster");
+});
+
+//Error route
+app.get('*',function(req,res){
+   res.render("error"); 
 });
 
 

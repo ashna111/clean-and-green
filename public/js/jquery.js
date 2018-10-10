@@ -14,8 +14,13 @@ $(document).ready(function(){
         $(".ds-venue").toggle();
     })
     
-    $(".addComment").click(function(){
-        $("#newComment").append(" <br>Appended text");
+    // $(".addComment").click(function(){
+    //     $("#newComment").append(" <br>Appended text");
+    // });
+    
+    $("#addComment").click(function(){
+        $("#addComment").hide();
+        $("#commentForm").show();
     });
 });
 

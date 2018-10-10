@@ -5,33 +5,45 @@
                 <h3 style='text-align:center;padding-bottom:10px'>Organise your drive!</h3>
                 <form action="/drives/<%= drive._id %>?_method=PUT" method="post">
                     <div class='form-group'>
-                        <input type='text' name='drive[dTitle]' class='form-control' value='<%= drive.dTitle %>' required>
+                        <label for='title'>Title</label>
+                        <input type='text' name='drive[dTitle]' class='form-control' value='<%= drive.dTitle %>' required id='title'>
                     </div>
                     <div class='form-group'>
-                        <input type='text' name='drive[dbanner]' class='form-control' value='<%= drive.dbanner%>' required>
+                        <label for='drive_banner'>Drive Banner</label>
+                        <input type='text' name='drive[dbanner]' class='form-control' value='<%= drive.dbanner%>' required id='drive_banner'>
                     </div>
                     <div class='form-group'>
-                        <input type="text" name='drive[dLocality]' value='<%= drive.dLocality %>' class="form-control">
+                        <label for='locality'>Locality</label>
+                        <input type="text" name='drive[dLocality]' value='<%= drive.dLocality %>' class="form-control" required id='locality'>
                     </div>
                     <div class='form-group'>
-                        <input type="text" name='drive[dArea]' value='<%= drive.dArea%>' class="form-control">
+                        <label for='area'>Area</label>
+                        <input type="text" name='drive[dArea]' value='<%= drive.dArea%>' class="form-control" required id='area'>
                     </div>
                     <div class='form-group'>
-                        <input type="text" name='drive[dCity]' value='<%= drive.dCity%>' class="form-control">
+                        <label for='city'>City</label>
+                        <input type="text" name='drive[dCity]' value='<%= drive.dCity%>' class="form-control" required id='city'>
                     </div>
                     <div class='form-group'>
-                        <input type='text' name='drive[dvenue]' class='form-control' value='<%= drive.dvenue%>' required>
+                        <label for='current_state'>Current state of the venue</label>
+                        <input type='text' name='drive[dvenueImage]' class='form-control' value='<%= drive.dvenueImage%>' required id='current_state'>
+                    </div>
+                    <div class='form-group'>
+                        <label for='current_desc'>Venue Description</label>
+                        <input type='text' name='drive[dvenue]' class='form-control' value='<%= drive.dvenue%>' required  id='current_desc'>
                     </div>
                     
                     <div class='form-group'>
-                        <input type='date' name='drive[dDate]' class='form-control' value='<%= newDate %>' required>
+                        <label for='date'>Date of the event</label>
+                        <input type='date' name='drive[dDate]' class='form-control' value='<%= newDate %>' required id='date'>
                     </div>
                     <!--<div class='form-group'>-->
                     <!--   <input type='time' name='time' min='9:00' max='17:00' class='form-control' required /> -->
                     <!--   <span class="hours">Working between: 9AM to 5PM</span>-->
                     <!--</div>-->
                     <div class='form-group'>
-                        <textarea class='form-control blog-textarea' name="drive[dContent]" required><%= drive.dContent %></textarea>
+                        <label for='desc'>Drive Description</label>
+                        <textarea class='form-control blog-textarea' name="drive[dContent]" required id='desc'><%= drive.dContent %></textarea>
                     </div>
                     <div class='form-group'>
                         <button class='btn btn-block login'><span style='color:#fff;'><i class="fab fa-envira"></i>&nbsp;Organise!</span></button>

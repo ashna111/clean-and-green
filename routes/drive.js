@@ -28,7 +28,7 @@ router.post("/drives",middleware.loggedIn,function(req,res){
        username: req.user.username
     }
     var dLocation= req.body.locality+",+"+req.body.area+",+"+req.body.city;
-    var newDrive={dTitle:req.body.title, dbanner:req.body.banner, dvenue:req.body.venue, dContent:req.body.body, dLocality:req.body.locality, dArea:req.body.area, dCity: req.body.city, dGeoLocation: dLocation ,dDate:req.body.date, dOrganiser:organiser};
+    var newDrive={dTitle:req.body.title, dbanner:req.body.banner, dvenue:req.body.venue,dvenueImage:req.body.venueImage, dContent:req.body.body, dLocality:req.body.locality, dArea:req.body.area, dCity: req.body.city, dGeoLocation: dLocation ,dDate:req.body.date, dOrganiser:organiser};
     Drive.create(newDrive,function(err, newlyCreatedDrive){
         if(err){
            console.log("Error");
@@ -40,7 +40,7 @@ router.post("/drives",middleware.loggedIn,function(req,res){
 
 //details drive
 router.get("/drives/:id",function(req, res) {
-    Drive.findById(req.params.id,function(err,foundDrive){
+    Drive.findById(req.params.id).populate("comments").populate("volunteers").exec(function(err,foundDrive){
         if(err){
             res.redirect("/drives");
         }else{
@@ -69,6 +69,7 @@ router.put("/drives/:id",middleware.loggedIn,function(req,res){
     var newDriveUpdates={
         dTitle:req.body.drive.dTitle, 
         dbanner:req.body.drive.dbanner,
+        dvenueImage:req.body.drive.dvenueImage,
         dvenue:req.body.drive.dvenue, 
         dContent:req.body.drive.dContent,
         dLocality:req.body.drive.dLocality, 

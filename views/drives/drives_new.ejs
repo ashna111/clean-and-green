@@ -1,36 +1,48 @@
 <% include ../partials/header %>
     <div class='container'>
         <div class='row'>
-            <div style='width:40%; margin:75px auto;font-family:serif;'>
+            <div style='width:50%; margin:75px auto;font-family:serif;'>
                 <h3 style='text-align:center;padding-bottom:10px'>Organise your drive!</h3>
                 <form method='post' action='/drives'>
                     <div class='form-group'>
-                        <input type='text' name='title' class='form-control' placeholder='Title' required>
+                        <label for='title'>Title</label>
+                        <input type='text' name='title' class='form-control' placeholder='Title' required id='title'>
                     </div>
                     <div class='form-group'>
-                        <input type='text' name='banner' class='form-control' placeholder='Banner' required>
+                        <label for='drive_banner'>Drive Banner</label>
+                        <input type='text' name='banner' class='form-control' placeholder='Banner' required id='drive_banner'>
                     </div>
                     <div class='form-group'>
-                        <input type="text" name="locality" placeholder="Locality" class="form-control">
+                        <label for='locality'>Locality</label>
+                        <input type="text" name="locality" placeholder="Locality" class="form-control" required id='locality'>
                     </div>
                     <div class='form-group'>
-                        <input type="text" name="area" placeholder="Area" class="form-control">
+                        <label for='area'>Area</label>
+                        <input type="text" name="area" placeholder="Area" class="form-control" required id='area'>
                     </div>
                     <div class='form-group'>
-                        <input type="text" name="city" placeholder="City" class="form-control">
+                        <label for='city'>City</label>
+                        <input type="text" name="city" placeholder="City" class="form-control" required id='city'>
                     </div>
                     <div class='form-group'>
-                        <input type='text' name='venue' class='form-control' placeholder='Venue' required>
+                        <label for='current_state'>Current state of the venue</label>
+                        <input type='text' name='venueImage' class='form-control' placeholder='Venue image' required id='current_state'>
                     </div>
                     <div class='form-group'>
-                        <input type='date' name='date' class='form-control' required>
+                        <label for='current_desc'>Venue Description</label>
+                        <input type='text' name='venue' class='form-control' placeholder='Venue' required id='current_desc'>
+                    </div>
+                    <div class='form-group'>
+                        <label for='date'>Date of the event</label>
+                        <input type='date' name='date' class='form-control' required id='date'>
                     </div>
                     <!--<div class='form-group'>-->
                     <!--   <input type='time' name='time' min='9:00' max='17:00' class='form-control' required /> -->
                     <!--   <span class="hours">Working between: 9AM to 5PM</span>-->
                     <!--</div>-->
                     <div class='form-group'>
-                        <textarea class='form-control blog-textarea' name="body" placeholder="Drive description goes here!" required></textarea>
+                        <label for='desc'>Drive Description</label>
+                        <textarea class='form-control blog-textarea' name="body" placeholder="Drive description goes here!" required id='desc'></textarea>
                     </div>
                     <div class='form-group'>
                         <button class='btn btn-block login'><span style='color:#fff;'><i class="fab fa-envira"></i>&nbsp;Organise!</span></button>
