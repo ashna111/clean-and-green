@@ -22,6 +22,9 @@ $(document).ready(function(){
         $("#addComment").hide();
         $("#commentForm").show();
     });
+    
+    
+    
 });
 
 

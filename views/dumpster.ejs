@@ -1,43 +1,54 @@
 <% include partials/header %>
 
 <div class="container">
-    <div class= "row">
-        <div class="dumpster">
-            <div class="jumbotron">
-                <h2>Find Your Dumpster!</h2>
-                <hr>
-                <p>
+    <div class= "row dumpster">
+        <div class="col-md-6 col-xs-12">
+            <div class="panel panel-default">
+                <div class='panel-heading'>Dispose Your waste</div>
+                <div class='panel-body'>
                     Disposing off waste in the right place is crucial for the betterment of the environment. <br> 
                     Here, at Clean and Green, we provide you with the facility of finding dumpsters near your locality. 
-                </p>
-                <a class=" btn btn-lg dumpster-button" href="#">Nearby Dumpsters</a>
+                </div>
             </div>
         </div>
-    </div>
+
     
-    <div class="row">
+
         <div class="col-md-6 col-xs-12">
-            <div class="panel panel-default dumpster-panel">
+            <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2>How It Works?</h2>
+                    How It Works?
                 </div>
                 <div class="panel-body">
                     <p>
-                        You simply have to provide us your Pin-code and we will show you the list of nearby dumpsters around your locality. <br>
+                        One can refer the maps and search through the locations and thus find your nearest dumpster location.<br>
+                        <h3 align="center" style='font-family:"Montserrat",sans-serif;'>Re-think the future</h3>
                     </p>
                 </div>
             </div>
         </div>
-        
-        <div class="col-md-6 col-xs-12 postal">
-            <div>
-                <h2>Enter your ZIP or Postal Code</h2>
-                <form action="" method="">
-                    <input type="number" placeholder="Pin-code">
-                    <input type="submit" class="btn btn-md pincode-button">
-                </form>
-        </div>
     </div>
+    
+    <div class=row>
+        <iframe id="map"
+			width="100%"
+			frameborder="0" style="border:0; height: 400px;"
+		    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE4x8s87dyYr_6auXG9CG2BEFpgXnIwC4&callback=initMap">
+		</iframe>
+  
+        <script>
+           function initMap(){
+              // Map options
+              var options = {
+                zoom:8,
+                center:{lat:19.0760,lng:-72.8777}
+              }
+        
+              // New map
+              var map = new google.maps.Map(document.getElementById('map'), options); }
+        </script>
+  </div>
+
 </div>
 
 <% include partials/footer %>

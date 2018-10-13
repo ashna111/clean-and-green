@@ -50,6 +50,18 @@ router.get("/drives/:id",function(req, res) {
     });
 });
 
+router.put("/drives/:id/approveStatus",function(req,res){
+   Drive.findById(req.params.id,function(err,drive){
+       if(err){
+           console.log(err);
+       }else{
+       drive.dverify=true;
+       drive.save();
+       res.redirect("/drives");
+       }
+   }) 
+});
+
 //Edit drive route
 router.get("/drives/:id/edit",middleware.loggedIn,function(req, res) {
    Drive.findById(req.params.id,function(err,driveFound){

@@ -16,21 +16,41 @@
     <div class="container">
 		<div class="row text-center" style="display:flex; flex-wrap:wrap;">
 			
-			<% drives.forEach(function(drive){ %>
-			<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-				<div class="thumbnail zoom">
-					<img  src="<%= drive.dbanner %>">
-					<div class="drives-caption">
-						<h4> <%= drive.dTitle %> </h4>
-						<h4><%= drive.dLocation %></h4>
-						<h4> <%= drive.dDate.toDateString() %></h4>
-					</div>
-					<p>
-						<a href="/drives/<%= drive._id %>" class="btn drives-btn">Read More</a>
-					</p>
-				</div>
-			</div>
-			<% });%>
+			<% if(currentUser && currentUser.isAdmin==true){%>
+				<% drives.forEach(function(drive){ %>
+					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+						<div class="thumbnail zoom">
+							<img  src="<%= drive.dbanner %>">
+							<div class="drives-caption">
+								<h4> <%= drive.dTitle %> </h4>
+								<h4><%= drive.dLocation %></h4>
+								<h4> <%= drive.dDate.toDateString() %></h4>
+							</div>
+							<p>
+								<a href="/drives/<%= drive._id %>" class="btn drives-btn">Read More</a>
+							</p>
+						</div>
+					</div>			
+				<% });%>
+			<% }else{ %>
+				<% drives.forEach(function(drive){ %>
+					<% if(drive.dverify==true){ %>
+						<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+							<div class="thumbnail zoom">
+								<img  src="<%= drive.dbanner %>">
+								<div class="drives-caption">
+									<h4> <%= drive.dTitle %> </h4>
+									<h4><%= drive.dLocation %></h4>
+									<h4> <%= drive.dDate.toDateString() %></h4>
+								</div>
+								<p>
+									<a href="/drives/<%= drive._id %>" class="btn drives-btn">Read More</a>
+								</p>
+							</div>
+						</div>
+					<% } %>
+				<% });%>
+			<% } %>
 		</div>
 	</div>
 

@@ -295,7 +295,6 @@ hr{
 	font-family: serif;
 	padding-top: 10px;
 	font-size:15px;
-	color: #323233;
 }
 .ds-read{
 	border-radius: 10px;
@@ -307,7 +306,7 @@ hr{
 	color: #015249;
 }
 
-#volunteer{
+.ds-btn{
 	font-family: "Montserrat",sans-serif;
 	background: #015249;
 	color:#fff;
@@ -318,6 +317,10 @@ hr{
 	border: 0px
 }
 
+#vol-ty{
+	font-family: "Montserrat",sans-serif;
+	color: #015249;
+}
 
 /*Think Green*/
 section{
@@ -379,62 +382,20 @@ article h2{
 }
 
 /*Dumpster*/
-
-.dumpster .jumbotron{
-	/*margin-top: 25px;*/
-	margin-left: 10px;
-	margin-right: 10px;
+.dumpster .panel{
+	height: 200px;
+}
+.dumpster .panel .panel-heading{
+	font-family:"Montserrat",sans-serif;
+	font-size: 20px;
+	color: #008080;
+}
+.dumpster .panel .panel-heading{
+	background-color: #fff;
+}
+.dumpster .panel .panel-body{
 	font-family: serif;
-	background:#ecf0f1;
-	color: #2c3e50;
-	text-align: center;
-}
-
-.dumpster-button{
-	background: #77C9D4;
-	color:#fff;
-}
-
-.pincode-button{
-	background: #77C9D4;
-	color:#fff;
-	display: block;
-	margin-top: 5px;
-}
-
-.dumpster-panel{
-	/*margin-left: 15px;*/
-	/*float: left;*/
-}
-
-.dumpster-panel .panel-heading{
-	/*padding: 10px;*/
-	margin: 0px;
-}
-.dumpster-panel .panel-heading h2{
-	margin: 0px;
-	font-family:"Montserrat",sans-serif;
-	font-size: 23px;
-	padding-left: 15px;
-}
-
-.postal{
-	/*padding: 25px;*/
-	background: #ecf0f1;
-	/*float: right;*/
-	/*margin-right: 15px;*/
-	/*margin-bottom: 15px;*/
-}
-
-.postal h2{
-	margin: 0px;
-	font-family:"Montserrat",sans-serif;
-	font-size: 23px;
-	padding: 15px;
-}
-
-.postal form{
-	padding: 15px;
+	font-size: 18px;
 }
 
 /*Error 404*/

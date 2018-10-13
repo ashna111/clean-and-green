@@ -6,7 +6,7 @@
             <div class="panel panel-default tg-panel">
                 
                     <div class="panel-heading">
-                        <h2>About the venue</h2>
+                        <h2 style="color:#015249;">About the venue</h2>
                     </div>
                     <div class="panel-body">
                         <div class="thumbnail">
@@ -18,6 +18,12 @@
                     
                     </div>
             </div>
+            
+            <% if(drive.dverify==false){ %>
+                <form method="POST" action='/drives/<%= drive._id %>/approveStatus?_method=PUT'>
+                    <button class='ds-btn'>Approve</button>
+                </form>
+            <% }%>
         </div>
         
         <div class="col-md-5">
@@ -28,9 +34,9 @@
                     </div>
                     <div>
                         <h3 id="ds-name"><%= drive.dTitle %></h3>
-                        <h4><%= drive.dLocality %>  <%= drive.dArea %></h3>
-                        <h5><strong><%= dDate  %></strong></h5>
-                        <p><%= drive.dContent %></p>
+                        <h4 style="color:#008080;"><%= drive.dLocality %>  <%= drive.dArea %></h3>
+                        <h4><strong><%= dDate  %></strong></h4>
+                        <p style="font-family:serif; font-size:16px;"><%= drive.dContent %></p>
                     </div>
                     <div class="blog-author">
                         <div class="pull-left">
@@ -46,24 +52,34 @@
                         </div>
                     </div>
                     <div>
-                        <form action="/drives/<%= drive._id %>/volunteer" method=POST>
-                            <button id="volunteer">Volunteer now!</button>
-                        </form>
+                        <br><br>
+                        <% var volunteer_set; %>
+                        <% drive.volunteers.forEach(function(volunteer){ %>
+                            <% if(currentUser && volunteer.vol.id.equals(currentUser._id)){ %>
+                                <div>
+                                   <p id="vol-ty">Thanks for volunteering!</p> 
+                                </div>
+                                <%  volunteer_set=1; %>
+                            <% } %>
+                        <% }) %>
+                        <% if(volunteer_set!=1){ %>
+                           <form id="volunteer-form" action="/drives/<%= drive._id %>/volunteer" method=POST>
+                           <button class="ds-btn">Volunteer now!</button>
+                           </form>
+                       <% } %> 
                     </div>
                 </div>
             </div>
             
-            <div class="well">
-                <button class ="pull-right btn btn-success" id="addComment"></i>Add a new Comment</button>
+            <div class="well" style="font-family:serif; font-size:16px;">
+                <button class ="pull-right btn btn-success ds-read" id="addComment"></i>Add a new Comment</button>
                 <form id="commentForm" style="display:none;" action="/drives/<%= drive._id %>/comments" method="POST">
-                    <textarea placeholder="Enter comment here" name="comment[text]"></textarea><br>
-                    <input type="submit" class="submitComment btn btn-success" value="Submit!">
+                    <input style="width:100%;" type="text" placeholder=" Enter comment here" name="comment[text]"><br>
+                    <input type="submit" class="submitComment btn btn-success ds-read" value="Submit!">
                 </form>
                 
                     <div class="row">
                         <div class="col-md-12">
-                            <!--<strong> username </strong>-->
-                            <!--<span class="pull-right">10 days ago</span>-->
                             <p id="newComment">
                                  <% drive.comments.forEach(function(comment){ %>
                                     <div class="row">
@@ -86,7 +102,7 @@
         
         <div class="col-md-4">
             <div>
-				<div class="row map-container text-center">
+				<div class="row map-container text-center" style="margin:5px;">
 		    		<iframe
 						width="100%"
 						frameborder="0" style="border:0; height: 400px;"
@@ -95,12 +111,17 @@
 		    	</div>
 		    </div>
 		    
-		  <div>
-		      <ul>
-		        <% drive.volunteers.forEach(function(volunteer){ %>
-                    <li><%= volunteer.vol.username %></li>
-                <% }) %>
-		      </ul>
+		  <div class="panel panel-default tg-panel" style="margin-top:20px">
+		      <div class="panel-heading">
+		         <h2 style="color:#015249;">Volunteer list</h2> 
+		      </div>
+		      <div class="panel-body" style="font-family:serif; font-size:16px;">
+		          <ol>
+    		        <% drive.volunteers.forEach(function(volunteer){ %>
+                        <li><%= volunteer.vol.username %></li>
+                    <% }) %>
+    		      </ol>
+		      </div>
 		  </div>
 		    
 		    

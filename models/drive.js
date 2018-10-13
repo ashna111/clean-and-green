@@ -1,6 +1,7 @@
 var mongoose=require('mongoose');
 
 var driveSchema = new mongoose.Schema({
+   dverify : {type:Boolean,default:false },
    dTitle: String,
    dbanner: String,
    dvenue: String,
