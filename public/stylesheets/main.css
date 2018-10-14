@@ -164,25 +164,25 @@ body{
 .blog-content{
 	font-size: 18px;
 }
-.blog-btn,.ds-read{
+.blog-btn,.ds-read,.ds-comment{
 	background: #fff;
 	color: #0E6EB8;
 	border-color: #0E6EB8;
 	margin-top: 10px;
 }
-.blog-btn:hover,.ds-read:hover{
+.blog-btn:hover,.ds-read:hover,.ds-comment:hover{
 	background: #fff;
 	color: #008080;
 	border-color: #008080;
 	margin-top: 10px;
 }
-.blog-btn:active,.ds-read:active{
+.blog-btn:active,.ds-read:active,.ds-comment:active{
 	background: #fff;
 	color: #008080;
 	border-color: #008080;
 	margin-top: 10px;
 }
-.blog-btn:visited,.ds-read:visited{
+.blog-btn:visited,.ds-read:visited,.ds-comment:visited{
 	background: #fff;
 	color: #008080;
 	border-color: #008080;
@@ -383,7 +383,7 @@ article h2{
 
 /*Dumpster*/
 .dumpster .panel{
-	height: 200px;
+	height: 235px;
 }
 .dumpster .panel .panel-heading{
 	font-family:"Montserrat",sans-serif;

@@ -13,9 +13,7 @@
                             <img src="<%= drive.dvenueImage %>">
                         </div>
                         <div align="center"><button class="btn btn-success ds-read">Details</button></div>
-                        
                          <p style="display:none" class="ds-venue"><%= drive.dvenue %> </p>
-                    
                     </div>
             </div>
             
@@ -72,10 +70,10 @@
             </div>
             
             <div class="well" style="font-family:serif; font-size:16px;">
-                <button class ="pull-right btn btn-success ds-read" id="addComment"></i>Add a new Comment</button>
+                <button class ="pull-right btn btn-success ds-comment" id="addComment"></i>Add a new Comment</button>
                 <form id="commentForm" style="display:none;" action="/drives/<%= drive._id %>/comments" method="POST">
                     <input style="width:100%;" type="text" placeholder=" Enter comment here" name="comment[text]"><br>
-                    <input type="submit" class="submitComment btn btn-success ds-read" value="Submit!">
+                    <input type="submit" class="submitComment btn btn-success ds-comment" value="Submit!">
                 </form>
                 
                     <div class="row">
