@@ -27,28 +27,92 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class=row>
-        <iframe id="map"
-			width="100%"
-			frameborder="0" style="border:0; height: 400px;"
-		    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE4x8s87dyYr_6auXG9CG2BEFpgXnIwC4&callback=initMap">
-		</iframe>
-  
-        <script>
-           function initMap(){
-              // Map options
-              var options = {
-                zoom:8,
-                center:{lat:19.0760,lng:-72.8777}
-              }
         
-              // New map
-              var map = new google.maps.Map(document.getElementById('map'), options); }
-        </script>
-  </div>
-
+        <div class="row col-md-6 col-xs-12" id="map" style="height: 600px; width: 100%; margin:10px"></div>
+    </div>
 </div>
+
+<script>
+    function initMap(){
+      // Map options
+      var options = {
+        zoom:11,
+        center:{lat:19.0760, lng:72.8777}
+      }
+    
+      // New map
+      var map = new google.maps.Map(document.getElementById('map'), options);
+      // Array of markers
+      var markers = [
+        {
+          coords:{lat:19.0714,lng:72.9298},
+          iconImage:'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+          content:'<h4>Deonar Dumping Ground</h4>'
+        },
+        {
+          coords:{lat:19.1711,lng:72.9734},
+          iconImage:'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+          content:'<h4>Mulund Dumping Ground</h4>'
+        },
+        {
+          coords:{lat:19.1273,lng:72.9400},
+          iconImage:'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+          content:'<h4>Kanjurmarg Dumping Ground</h4>'
+        },
+        {
+          coords:{lat:19.0287,lng:72.8466},
+          iconImage:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+          content:'<h4>BMC Matunga</h4>'
+        },
+        {
+          coords:{lat:19.0160,lng:72.8643},
+          iconImage:'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+          content:'<h4>Textile Waste</h4>'
+        },
+        {
+          coords:{lat:19.0800,lng:72.8988},
+          iconImage:'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+          content:'<h4>Vidyavihar</h4>'
+        }
+      ];
+    
+      // Loop through markers
+      for(var i = 0;i < markers.length;i++){
+        // Add marker
+        addMarker(markers[i]);
+      }
+    
+      // Add Marker Function
+      function addMarker(props){
+        var marker = new google.maps.Marker({
+          position:props.coords,
+          map:map,
+          //icon:props.iconImage
+        });
+    
+        // Check for customicon
+        if(props.iconImage){
+          // Set icon image
+          marker.setIcon(props.iconImage);
+        }
+    
+        // Check content
+        if(props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
+    
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+    
+        }
+      }
+    }
+</script>
+  
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE4x8s87dyYr_6auXG9CG2BEFpgXnIwC4&callback=initMap">
+</script>
 
 <% include partials/footer %>
