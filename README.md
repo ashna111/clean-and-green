@@ -35,6 +35,8 @@
 ```sh
 $ git clone https://github.com/ashna111/clean-and-green.git
 
+$ npm install
+
 $ mongod
 
 $ node app.js
