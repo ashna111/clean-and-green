@@ -68,11 +68,11 @@ app.get('*',function(req,res){
 });
 
 // c9environment
-app.listen(process.env.PORT,process.env.IP,function(){
-	console.log("Welcome to Clean And Green!");
-});
-
-// To run locally
-// app.listen(3000,function(){
+// app.listen(process.env.PORT,process.env.IP,function(){
 // 	console.log("Welcome to Clean And Green!");
 // });
+
+// To run locally
+app.listen(3000,function(){
+	console.log("Welcome to Clean And Green!");
+});
