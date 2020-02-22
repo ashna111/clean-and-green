@@ -15,8 +15,10 @@
                         <div class='pull-left'>
                             <p id="like-count"> <%= blog.bLikes %> </p>
                             <% if(currentUser){ %>
-                                <p id="blog-id" style="display:none;"><%= blog._id%></p>
-                                <button id="blog-like" class="btn btn-default"><i class="far fa-thumbs-up blog-icons blog-delete-icon"></i></button>
+                                <form action="/blog/like/<%= blog._id %>?_method=PUT" method="POST">
+                                    <p id="blog-id" style="display:none;"><%= blog._id%></p>
+                                    <button id="blog-like" class="btn btn-default"><i class="far fa-thumbs-up blog-icons blog-delete-icon"></i></button>
+                                </form>
                             <% } %>
                             <% if(currentUser && blog.author.id.equals(currentUser._id)){ %>
                                 <a href="/blog/<%= blog._id %>/edit" class="btn btn-default"><i class="fas fa-pen blog-icons"></i></a>

@@ -10,25 +10,26 @@ $(document).ready(function(){
         $("#commentForm").show();
     });
     
-    $("#blog-like").click(function(){
+    $("#blog-like").click(function(e){
+        e.preventDefault();
         // console.log("like clicked");
         var id = $("#blog-id").html();
-        var data = {
-            bTitle: $("#blog-title").html(),
-            bImage: $("#blog-image").attr('src'),
-            bContent:$("#blog-content").html(),
-            bLikes: Number($("#like-count").html())+1,
+        var blog = {
+            "bTitle": $("#blog-title").html(),
+            "bImage": $("#blog-image").attr('src'),
+            "bContent":$("#blog-content").html(),
+            "bLikes": Number($("#like-count").html())+1,
         }
-        // var id= p.html();
-        console.log(id);
-        console.log(data);
+        console.log(id)
+        console.log(blog)
         $.ajax({
-            url: '/blog/' + id +"?_method=PUT",
+            url: '/blog/like/' + id +"?_method=PUT",
             method: 'POST',
-            contentType: 'json',
-            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(blog),
             success: function(response){
                 //console.log(response);
+                $("#like-count").text(blog.bLikes);
             }
         })
     })
