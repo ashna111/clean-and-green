@@ -64,10 +64,13 @@ router.get("/blog/:id/edit",middleware.loggedIn,function(req, res) {
 
 //edit put route
 router.put("/blog/:id",middleware.loggedIn,function(req,res){
+    console.log(req.params.id);
    Blog.findByIdAndUpdate(req.params.id,req.body.blog,function(err,updatedBlog){
        if(err){
+           console.log(err);
            res.redirect("/blog");
        }else{
+           console.log("success");
            res.redirect("/blog/"+req.params.id);
        }
    }) ;

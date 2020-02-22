@@ -5,7 +5,7 @@ var blogSchema = new mongoose.Schema({
     bImage: String,
     bContent: String,
     bDate: { type: Date, default: Date.now },
-    blikes: { type: Number, default: 0},
+    bLikes: { type: Number, default: 0},
     author:{
         id: {
             type: mongoose.Schema.Types.ObjectId,

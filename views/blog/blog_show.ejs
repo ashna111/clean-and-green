@@ -2,20 +2,21 @@
     <div class='container'>
         <div class='row'>
             <div class='panel panel-default blog-details' style='width:80%;margin:25px auto'>
-                <div class='panel-heading'><%= blog.bTitle %></div>
+                <div id="blog-title" class='panel-heading'><%= blog.bTitle %></div>
                 <div class='panel-body'>
                     <div class='thumbnail' style='width:70%;margin:0 auto'>
-                        <img src='<%= blog.bImage %>'>
+                        <img id="blog-image" src='<%= blog.bImage %>'>
                     </div>
                     <div class='blog-body'>
-                        <p> <%= blog.bContent %>
+                        <p id="blog-content"> <%= blog.bContent %>
                         </p>
                     </div>
                     <div class='blog-author'>
                         <div class='pull-left'>
-                            <p> <%= blog.blikes %> people like this</p>
+                            <p id="like-count"> <%= blog.bLikes %> </p>
                             <% if(currentUser){ %>
-                                <button class="btn btn-default"><i class="far fa-thumbs-up blog-icons blog-delete-icon"></i></button>
+                                <p id="blog-id" style="display:none;"><%= blog._id%></p>
+                                <button id="blog-like" class="btn btn-default"><i class="far fa-thumbs-up blog-icons blog-delete-icon"></i></button>
                             <% } %>
                             <% if(currentUser && blog.author.id.equals(currentUser._id)){ %>
                                 <a href="/blog/<%= blog._id %>/edit" class="btn btn-default"><i class="fas fa-pen blog-icons"></i></a>
