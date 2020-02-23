@@ -19,8 +19,11 @@ var Comment = require("./models/comment");
 var Volunteer = require("./models/volunteer");
 
 //Configuration
-app.use(bodyParser.urlencoded({ extended: true }));
-app.set("view engine", "ejs");
+
+// app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser());
+app.set("view engine","ejs");
+
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 

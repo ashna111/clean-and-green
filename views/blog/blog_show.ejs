@@ -2,17 +2,24 @@
     <div class='container'>
         <div class='row'>
             <div class='panel panel-default blog-details' style='width:80%;margin:25px auto'>
-                <div class='panel-heading'><%= blog.bTitle %></div>
+                <div id="blog-title" class='panel-heading'><%= blog.bTitle %></div>
                 <div class='panel-body'>
                     <div class='thumbnail' style='width:70%;margin:0 auto'>
-                        <img src='<%= blog.bImage %>'>
+                        <img id="blog-image" src='<%= blog.bImage %>'>
                     </div>
                     <div class='blog-body'>
-                        <p> <%= blog.bContent %>
+                        <p id="blog-content"> <%= blog.bContent %>
                         </p>
                     </div>
                     <div class='blog-author'>
                         <div class='pull-left'>
+                            <p id="like-count"> <%= blog.bLikes %> </p>
+                            <% if(currentUser){ %>
+                                <form action="/blog/like/<%= blog._id %>?_method=PUT" method="POST">
+                                    <p id="blog-id" style="display:none;"><%= blog._id%></p>
+                                    <button id="blog-like" class="btn btn-default"><i class="far fa-thumbs-up blog-icons blog-delete-icon"></i></button>
+                                </form>
+                            <% } %>
                             <% if(currentUser && blog.author.id.equals(currentUser._id)){ %>
                                 <a href="/blog/<%= blog._id %>/edit" class="btn btn-default"><i class="fas fa-pen blog-icons"></i></a>
                                 <form action="/blog/<%= blog._id %>?_method=DELETE" method="POST" class="delete-form">
