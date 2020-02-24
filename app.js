@@ -1,12 +1,15 @@
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
-var methodOverride = require("method-override");
-var moment = require("moment");
-var passport = require("passport"),
-  localStrategy = require("passport-local"),
-  passportLocalMongoose = require("passport-local-mongoose");
+var express=require('express');
+var app=express();
+var bodyParser=require('body-parser');
+var mongoose=require('mongoose');
+var methodOverride=require('method-override');
+var moment=require('moment');
+var passport=require("passport"),
+    localStrategy=require("passport-local"),
+    passportLocalMongoose=require("passport-local-mongoose");
+
+
+
 
 //DB connection
 mongoose.connect("mongodb://localhost/cng");

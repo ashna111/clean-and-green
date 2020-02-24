@@ -149,5 +149,24 @@
           </div>
         </article>
       </div>
+
+      <div class="row">
+        <article>
+          <div class="panel panel-default tg-panel">
+            <div class="panel-body">
+              <div class="col-sm-12 tg-do tg-content">
+                <h2 class="dont" style="text-align: center;">Latest News From Grist.org</h2>
+                <ul>
+                  <% contents.forEach(function(content){ %>
+                    <li>
+                      <a href="<%= content.link %>"><%= content.item %></a>
+                    </li>
+                  <% }) %>
+                </ul>
+              </div>
+            </div> 
+          </div>
+        </article>
+      </div>
     </div>
 <% include partials/footer %>
