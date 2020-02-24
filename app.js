@@ -1,71 +1,14 @@
-<<<<<<< HEAD
 var express=require('express');
 var app=express();
 var bodyParser=require('body-parser');
 var mongoose=require('mongoose');
 var methodOverride=require('method-override');
 var moment=require('moment');
-const cheerio=require('cheerio');
-const request=require('request');
 var passport=require("passport"),
     localStrategy=require("passport-local"),
     passportLocalMongoose=require("passport-local-mongoose");
-=======
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
-var methodOverride = require("method-override");
-var moment = require("moment");
-var passport = require("passport"),
-  localStrategy = require("passport-local"),
-  passportLocalMongoose = require("passport-local-mongoose");
->>>>>>> 5f85ff41a004bf35ac5abc5ca423380977d4fece
 
-// request('https://wmtc.org.in/', (error, response, html)=>{
-//     if(!error && response.statusCode == 200){
-//         // console.log(html);
-//         const $ = cheerio.load(html);
 
-//         const siteHeading = $('.home-heading');
-//         // console.log(siteHeading);
-//         console.log(siteHeading.html());
-//     }
-// })
-
-// request('https://nirankarifoundation.org/cleanliness-drive/', (error, response, html) => {
-//     if (!error && response.statusCode == 200) {
-//         // console.log(html);
-//         const $ = cheerio.load(html);
-//         // const siteHeading = $('.titlepage h1');
-//         // console.log(siteHeading.text());
-
-//         const driveTitle =$('.squarePostTitle');
-//         console.log(driveTitle.html());
-//         $('.squarePostTitle').each((el)=>{
-//             const item = $(el).html();
-//             console.log(item);
-//         })
-//     }
-// })
-
-request('https://grist.org/', (error, response, html) => {
-    if (!error && response.statusCode == 200) {
-        // console.log(html);
-        const $ = cheerio.load(html);
-        // const siteHeading = $('.titlepage h1');
-        // console.log(siteHeading.text());
-
-        // const cardTitle = $('.card__title');
-        // console.log(cardTitle.text());
-        var i=0;
-        $('.card__title').each((i, el) => {
-            const item = $(el).find('.card__title-link').text().replace(/\s\s+/g, '');
-            console.log(i++);
-            console.log(item);
-        })
-    }
-})
 
 
 //DB connection
