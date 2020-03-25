@@ -64,7 +64,9 @@ router.get("/blog/:id/edit",middleware.loggedIn,function(req, res) {
 
 //edit put route
 router.put("/blog/:id",middleware.loggedIn,function(req,res){
-    // console.log(JSON.stringify(req.body));
+    console.log(req.body);
+    console.log("Blog"+req.body.blog);
+
    Blog.findByIdAndUpdate(req.params.id,req.body.blog,function(err,updatedBlog){
        if(err){
         //    console.log(err);
